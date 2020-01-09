@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'listViewPage.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:path_provider/path_provider.dart';
+import 'dart:io';
 class Home extends StatefulWidget {
   final SharedPreferences preferences;
   final String title;
@@ -13,6 +15,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+    
 
 
   List<String> category = [
@@ -88,12 +91,12 @@ class _HomeState extends State<Home> {
     String img = '';
     if (title == "Fresher King") {
       img = 'assets/images/FresherKing.png';
-    } else if (title == "Freshe Queen") {
-      img = 'assets/images/$title.png';
+    } else if (title == "Fresher Queen") {
+      img = 'assets/images/FresherQueen.png';
     } else if (title == "The Whole King") {
-      img = 'assets/images/$title.png';
+      img = 'assets/images/TheWholeKing.png';
     } else {
-      img = 'assets/images/$title.png';
+      img = 'assets/images/TheWholeQueen.png';
     }
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
