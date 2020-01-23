@@ -4,6 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Home extends StatefulWidget {
   final SharedPreferences preferences;
   final String title;
@@ -15,7 +17,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-    
+
 
 
   List<String> category = [
@@ -29,24 +31,26 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     SharedPreferences preferences=widget.preferences;
 
+
     return new Scaffold(
        // backgroundColor: Colors.teal[300],
         appBar: new AppBar(
+          shape: ContinuousRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(100),
+              ),),
           title: new Text(
-            "Fresher Welcome", style: new TextStyle(color: Colors.white,
+            "UCSMDY", style: new TextStyle(color: Colors.white,
             fontFamily: 'Raleway',
             fontWeight: FontWeight.w800),),
           centerTitle: true,
           backgroundColor: Colors.teal[300],
         ), //appbar
         body: new Container(
-//          decoration: BoxDecoration(
-//              image: DecorationImage(
-//                image: AssetImage('assets/images/bg.jpg'),
-//                fit: BoxFit.cover,)),,
+
 
           child: new Container(
-            margin: const EdgeInsets.only(top: 70.0),
+            margin: const EdgeInsets.only(top: 30.0),
 
             child: GridView(
               physics: BouncingScrollPhysics(),
@@ -83,7 +87,17 @@ class _HomeState extends State<Home> {
 
           ),
 
+
         ),
+      bottomNavigationBar:  Container(
+        height: 150.5,
+        padding: const EdgeInsets.all(10.8),
+         margin: const EdgeInsets.only(bottom: 20),
+         child: Image(
+              image: AssetImage('assets/images/main.png')
+          )
+      ),
+
     );
   }
 

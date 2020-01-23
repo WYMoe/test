@@ -99,12 +99,14 @@ class _ListViewPageState extends State<ListViewPage> {
 //}
 
 
+
   @override
   Widget build(BuildContext context) {
+    //Firestore.instance.collection('votes').document('-LxbMsQholcuj01Z6r_0').updateData({widget.title:true,});
 
     if(widget.sharedPreferences.get('login')==null){
       setState(() {
-        _text_for_btn="Login with QR ";
+        _text_for_btn="Scan and Vote";
       });
     }
     else{
@@ -126,20 +128,37 @@ class _ListViewPageState extends State<ListViewPage> {
             stream: getData(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
-                return new Text("Loading");
+                return new Center(
+                  child: CircularProgressIndicator(
+
+                    backgroundColor: Colors.teal[400],
+                    strokeWidth: 5,
+                  ),
+                );
               } else {
                 return CustomScrollView(
                   slivers:[
                     SliverAppBar(
-                      backgroundColor: Colors.cyan[800],
-                      expandedHeight: 150,
+                      backgroundColor: Colors.teal[400],
+                      expandedHeight: 280,
                       floating: false,
                       pinned: true,
                       flexibleSpace: FlexibleSpaceBar(
-                        title: Text(
-                          "${widget.title}", style: new TextStyle(color: Colors.blueGrey[50],
+
+                        title:InkWell(
+                            child:Text(
+                          "${widget.title}", style: new TextStyle(color: Colors.white,
                             fontFamily: 'Raleway',
-                            fontWeight: FontWeight.w800),),
+                            fontSize: 21.5,
+                            fontWeight: FontWeight.bold),),
+                        onTap:() async {
+                          QuerySnapshot qs=await Firestore.instance.collection('votes').document('The Whole Queen').collection('01 Shoon Kabyar Htun').getDocuments();
+                          var list=qs.documents;
+                          print(list.length);
+                      }),
+                        background: Image.asset('assets/images/main.png',
+                        fit: BoxFit.contain,
+                        width: 10.5,),
 
                       ),
 
