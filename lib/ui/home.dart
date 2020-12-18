@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'listViewPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:path_provider/path_provider.dart';
-import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class Home extends StatefulWidget {
   final SharedPreferences preferences;
